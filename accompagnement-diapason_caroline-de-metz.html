@@ -1,0 +1,1824 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DIAPASON - Retrouvez votre fréquence intérieure</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+
+        :root {
+
+            --color-primary: #D4AF37; /* Golden */
+
+            --color-secondary: #2C2C2C; /* Dark Grey */
+
+            --color-background: #FFFFF4; /* Off-White */
+
+            --color-light-bg: #FFFFF4; /* Light Off-White */
+
+            --color-card-bg: rgba(255, 255, 255, 0.9);
+
+            --color-shadow: rgba(0, 0, 0, 0.08);
+
+            --color-text-light: #666;
+
+            --color-accent-light: rgba(212, 175, 55, 0.1);
+
+            --color-accent-medium: rgba(212, 175, 55, 0.05);
+
+            --gradient-main: linear-gradient(135deg, var(--color-background) 0%, var(--color-light-bg) 100%);
+
+            --gradient-primary: linear-gradient(135deg, var(--color-primary), #FFFFF4);
+
+            --border-radius-lg: 25px;
+
+            --border-radius-md: 15px;
+
+            --border-radius-sm: 10px;
+
+        }
+
+        
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+            background: var(--gradient-main);
+
+            color: var(--color-secondary);
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+
+            scroll-behavior: smooth;
+
+        }
+
+        
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 0 25px;
+
+        }
+
+        
+
+        /* Header */
+
+        .header {
+
+            text-align: center;
+
+            padding: 80px 0 60px;
+
+            position: relative;
+
+            animation: fadeInUp 1s ease-out;
+
+        }
+
+        
+
+        .header::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 80%;
+
+            height: 1px;
+
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+
+            opacity: 0.5;
+
+        }
+
+        
+
+        .title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+
+            font-weight: 700;
+
+            color: var(--color-primary);
+
+            margin-bottom: 10px;
+
+            text-shadow: 2px 2px 5px var(--color-shadow);
+
+            line-height: 1;
+
+        }
+
+        
+
+        .subtitle {
+
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+
+            color: var(--color-secondary);
+
+            margin-bottom: 40px;
+
+            max-width: 700px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            animation: fadeInUp 1s ease-out 0.3s both;
+
+        }
+
+        
+
+        .description {
+
+            font-size: 1.05rem;
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            text-align: center; /* Centered for a softer look */
+
+            background: var(--color-card-bg);
+
+            padding: 40px;
+
+            border-radius: var(--border-radius-lg);
+
+            box-shadow: 0 12px 35px var(--color-shadow);
+
+            animation: fadeInUp 1s ease-out 0.6s both;
+
+            border: 1px solid rgba(212, 175, 55, 0.1);
+
+        }
+
+        
+
+        .description p {
+
+            margin-bottom: 15px;
+
+        }
+
+        
+
+        .description p:last-child {
+
+            margin-bottom: 0;
+
+            font-weight: 500;
+
+            color: var(--color-primary);
+
+        }
+
+        
+
+        /* Practical Info */
+
+        .practical-info {
+
+            background: var(--color-card-bg);
+
+            border-radius: var(--border-radius-lg);
+
+            box-shadow: 0 8px 25px var(--color-shadow);
+
+            padding: 40px 30px;
+
+            margin: 60px auto;
+
+            max-width: 900px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            animation: fadeInUp 1s ease-out 0.9s both;
+
+            border: 1px solid rgba(212, 175, 55, 0.1);
+
+        }
+
+        
+
+        .info-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            font-size: 1.1rem;
+
+            color: var(--color-secondary);
+
+            flex: 1 1 calc(33% - 40px); /* Adjust for 3 columns on larger screens */
+
+            min-width: 280px; /* Minimum width before wrapping */
+
+            text-align: left;
+
+        }
+
+        
+
+        .info-item i {
+
+            font-size: 1.8rem;
+
+            color: var(--color-primary);
+
+            width: 40px;
+
+            text-align: center;
+
+        }
+
+        
+
+        .info-item strong {
+
+            font-weight: 600;
+
+            color: var(--color-primary);
+
+        }
+
+        
+
+        /* Movement Section */
+
+        .movement {
+
+            margin: 100px 0;
+
+            position: relative;
+
+            animation: fadeInUp 10s ease-out;
+
+            padding-top: 30px; /* For anchor scroll */
+
+        }
+
+        
+
+        .movement-header {
+
+            text-align: center;
+
+            margin-bottom: 60px;
+
+            position: relative;
+
+        }
+
+        
+
+        .movement-icon {
+
+            font-size: 3.5rem;
+
+            color: var(--color-primary);
+
+            margin-bottom: 15px;
+
+            display: block;
+
+        }
+
+        
+
+        .movement-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+
+            color: var(--color-secondary);
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+
+            position: relative;
+
+        }
+
+        
+
+        .movement-title::before,
+
+        .movement-title::after {
+
+            content: '♪';
+
+            position: absolute;
+
+            font-family: 'Playfair Display', serif; /* Use a musical font or regular */
+
+            font-size: 1.8rem;
+
+            color: var(--color-primary);
+
+            opacity: 0.6;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+        }
+
+        
+
+        .movement-title::before {
+
+            left: -40px;
+
+        }
+
+        
+
+        .movement-title::after {
+
+            right: -40px;
+
+            content: '♫';
+
+        }
+
+        
+
+        .movement-description {
+
+            background: var(--color-card-bg);
+
+            padding: 30px;
+
+            border-radius: var(--border-radius-md);
+
+            margin-bottom: 50px;
+
+            box-shadow: 0 5px 20px var(--color-shadow);
+
+            border-left: 5px solid var(--color-primary);
+
+            font-size: 1.05rem;
+
+        }
+
+        
+
+        /* Session */
+
+        .session {
+
+            background: var(--color-card-bg);
+
+            margin: 40px 0;
+
+            border-radius: var(--border-radius-lg);
+
+            padding: 40px;
+
+            box-shadow: 0 10px 30px var(--color-shadow);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            border: 1px solid rgba(212, 175, 55, 0.08);
+
+        }
+
+        
+
+        .session:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+        }
+
+        
+
+        .session-header {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-bottom: 30px;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+
+            padding-bottom: 20px;
+
+        }
+
+        
+
+        .session-number {
+
+            background: var(--gradient-primary);
+
+            color: white;
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 1.6rem;
+
+            font-weight: 600;
+
+            box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+
+            flex-shrink: 0;
+
+            border: 2px solid white;
+
+        }
+
+        
+
+        .session-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+
+            color: var(--color-secondary);
+
+            font-weight: 600;
+
+            flex: 1;
+
+            min-width: 300px;
+
+        }
+
+        
+
+        .session-objective {
+
+            background: var(--color-accent-light);
+
+            padding: 25px;
+
+            border-radius: var(--border-radius-sm);
+
+            margin: 20px 0;
+
+            border-left: 5px solid var(--color-primary);
+
+            font-style: italic;
+
+            color: var(--color-secondary);
+
+        }
+
+        
+
+        .session-objective strong {
+
+            color: var(--color-primary);
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .session-content {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 40px;
+
+            margin-top: 30px;
+
+        }
+
+        
+
+        .content-section h4 {
+
+            font-family: 'Playfair Display', serif;
+
+            color: var(--color-primary);
+
+            font-size: 1.3rem;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .content-section h4 i {
+
+            font-size: 1.2rem;
+
+        }
+
+        
+
+        .content-list {
+
+            list-style: none;
+
+            padding: 0;
+
+        }
+
+        
+
+        .content-list li {
+
+            position: relative;
+
+            padding-left: 30px;
+
+            margin-bottom: 12px;
+
+            line-height: 1.7;
+
+            font-size: 1rem;
+
+        }
+
+        
+
+        .content-list li::before {
+
+            content: '\266B'; /* Musical note unicode */
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--color-primary);
+
+            font-size: 1.1rem;
+
+            top: 3px;
+
+            line-height: 1;
+
+        }
+
+        
+
+        .tools-section {
+
+            background: var(--color-accent-medium);
+
+            padding: 25px;
+
+            border-radius: var(--border-radius-sm);
+
+            margin-top: 20px;
+
+            border-left: 3px solid var(--color-primary);
+
+        }
+
+        
+
+        /* Final Section */
+
+        .final-section {
+
+            background: var(--color-accent-light);
+
+            border-radius: var(--border-radius-lg);
+
+            padding: 60px 40px;
+
+            margin: 80px 0;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 30px var(--color-shadow);
+
+            border: 1px solid rgba(212, 175, 55, 0.1);
+
+        }
+
+        
+
+        .final-section::before {
+
+            content: '♪ ♫ ♪ ♫ ♪ ♫ ♪';
+
+            position: absolute;
+
+            top: 25px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: rgba(212, 175, 55, 0.3);
+
+            font-size: 2.2rem;
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+        
+
+        .final-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+
+            color: var(--color-primary);
+
+            margin-bottom: 30px;
+
+            font-weight: 700;
+
+        }
+
+        
+
+        .final-description {
+
+            font-size: 1.15rem;
+
+            max-width: 650px;
+
+            margin: 0 auto 40px;
+
+            line-height: 1.8;
+
+            color: var(--color-secondary);
+
+        }
+
+        
+
+        /* Footer */
+
+        footer {
+
+            text-align: center;
+
+            padding: 60px 0;
+
+            color: var(--color-text-light);
+
+            font-style: italic;
+
+        }
+
+        
+
+        footer p {
+
+            font-size: 1.3rem;
+
+            margin-bottom: 25px;
+
+            font-family: 'Playfair Display', serif;
+
+            color: var(--color-primary);
+
+            font-weight: 500;
+
+        }
+
+        
+
+        footer .musical-notes {
+
+            font-size: 2.5rem;
+
+            color: var(--color-primary);
+
+            margin-top: 20px;
+
+            line-height: 1;
+
+        }
+
+        
+
+        /* Animations */
+
+        @keyframes fadeInUp {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(40px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+        
+
+        .fade-in {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition: all 0.8s ease;
+
+        }
+
+        
+
+        .fade-in.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        
+
+        /* Scroll Progress */
+
+        .scroll-progress {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 4px;
+
+            background: rgba(212, 175, 55, 0.2);
+
+            z-index: 1000;
+
+        }
+
+        
+
+        .progress-bar {
+
+            height: 100%;
+
+            background: var(--gradient-primary);
+
+            width: 0%;
+
+            transition: width 0.1s ease;
+
+        }
+
+        
+
+        /* Responsive */
+
+        @media (max-width: 992px) {
+
+            .info-item {
+
+                flex: 1 1 calc(50% - 30px); /* 2 columns on medium screens */
+
+            }
+
+        }
+
+        
+
+        @media (max-width: 768px) {
+
+            .session-content {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+
+            }
+
+            
+
+            .movement-title::before,
+
+            .movement-title::after {
+
+                display: none;
+
+            }
+
+            
+
+            .session-header {
+
+                flex-direction: column;
+
+                text-align: center;
+
+                align-items: center;
+
+            }
+
+            
+
+            .session-title {
+
+                min-width: auto;
+
+            }
+
+            
+
+            .practical-info {
+
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: 30px 20px;
+
+            }
+
+            
+
+            .info-item {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+            
+
+            .info-item i {
+
+                margin-bottom: 10px;
+
+            }
+
+        }
+
+        
+
+        @media (max-width: 480px) {
+
+            .title {
+
+                font-size: 3rem;
+
+            }
+
+            
+
+            .subtitle {
+
+                font-size: 1rem;
+
+            }
+
+            
+
+            .description, .movement-description {
+
+                padding: 25px;
+
+                font-size: 0.95rem;
+
+            }
+
+            
+
+            .session {
+
+                padding: 30px 20px;
+
+            }
+
+            
+
+            .session-number {
+
+                width: 60px;
+
+                height: 60px;
+
+                font-size: 1.4rem;
+
+            }
+
+            
+
+            .session-title {
+
+                font-size: 1.5rem;
+
+            }
+
+            
+
+            .content-list li {
+
+                font-size: 0.9rem;
+
+                padding-left: 25px;
+
+            }
+
+            
+
+            .final-title {
+
+                font-size: 2rem;
+
+            }
+
+            
+
+            .final-description {
+
+                font-size: 1rem;
+
+            }
+
+            
+
+            footer p {
+
+                font-size: 1rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="scroll-progress">
+
+        <div class="progress-bar"></div>
+
+    </div>
+
+    
+
+    <div class="container">
+
+        <header class="header">
+
+            <h1 class="title">DIAPASON</h1>
+
+            <p class="subtitle">Trouver sa propre mélodie pour résonner avec le monde</p>
+
+            <div class="description">
+
+                <p>Ce nom, <strong>DIAPASON</strong>, n'est pas un hasard. Il résonne avec ma propre histoire : ma passion profonde pour l'art et la musique, des vibrations du piano aux profondeurs de la contrebasse. Pour moi, l'harmonie n'est pas seulement musicale, elle est au cœur de l'être.</p>
+
+    <p>Dans nos sociétés occidentales, nous avons souvent tendance à nous perdre dans le mental, à analyser au lieu de ressentir. C'est pourquoi DIAPASON t'invite à un <strong>retour essentiel au corps et au cœur</strong>, une exploration sensorielle de ton monde intérieur.</p>
+
+    <p>Car la vie n'est qu'une symphonie de perceptions et d'expériences. Cet accompagnement te guide à affiner tes sens pour retrouver ta fréquence intérieure : celle où tu <strong>vois</strong> ta vérité sans filtre, où tu <strong>entends</strong> les murmures de ton intuition, où tu <strong>touches</strong> tes émotions profondes et où tu <strong>ressens</strong> la vibration juste de ton être. <strong>Celle, précisément, où tu es en paix, pleinement aligné·e et authentique.</strong></p>
+
+     <p>Trop souvent, tant que nous ne sommes pas accordés à nous-mêmes, nos relations peuvent <strong>sonner faux</strong> : par excès, par manque, ou dans un silence pesant.</p>
+
+    <p>Avec DIAPASON, je t'aide à (re)découvrir ce point d'équilibre parfait. Celui où tu n'as plus besoin de plaire, de prouver, ou d'attendre l'approbation. Celui où tu existes pleinement, et où les liens avec les autres deviennent simples, fluides, vrais et réciproques, car <strong>tu n'as plus à te perdre et te mentir pour être aimé·e.</strong></p>
+
+                <p><strong>Ceci n'est pas un coaching relationnel au sens classique. C'est une symphonie retrouvée entre votre esprit, votre cœur et votre corps.</strong></p>
+
+            </div>
+
+        </header>
+
+        
+
+        <section class="practical-info fade-in" id="infos-pratiques">
+
+            <h2 class="movement-title" style="width: 100%; margin-bottom: 20px; color: var(--color-secondary); font-size: 1.8rem;">Votre Parcours en Bref</h2>
+
+            <div class="info-item">
+
+                <i class="fas fa-hourglass-half"></i> 
+
+                <div>
+
+                    <strong>Durée :</strong> 3 mois intenses
+
+                </div>
+
+            </div>
+
+            <div class="info-item">
+
+                <i class="fas fa-calendar-alt"></i> 
+
+                <div>
+
+                    <strong>Fréquence :</strong> 9 séances individuelles d'1h30, une tous les 10 jours environ
+
+                </div>
+
+            </div>
+
+            <div class="info-item">
+
+                <i class="fas fa-headset"></i> 
+
+                <div>
+
+                    <strong>Accompagnement :</strong> Suivi WhatsApp 7/7, espace Notion dédié, ressources guidées
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <section class="movement fade-in" id="mouvement1">
+
+            <div class="movement-header">
+
+                <i class="fas fa-eye movement-icon"></i>
+
+                <h2 class="movement-title">Mouvement 1 : VOIR & ÉCOUTER</h2>
+
+                <p class="movement-subtitle">L'Écho Originel : Se regarder avec clarté, s'écouter avec vérité.</p>
+
+            </div>
+
+            <div class="movement-description">
+
+                <p>Ce premier accordage vous invite à une plongée introspective. Il s'agit de s'arrêter, d'observer sans jugement les paysages intérieurs et les schémas silencieux qui ont façonné vos relations. Une écoute profonde pour capter les premières notes de votre mélodie authentique.</p>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">1</div>
+
+                    <h3 class="session-title">VOIR : La Partition Secrète de Votre Être</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Poser le cadre, prendre conscience des décalages internes, amorcer le travail de transformation (travail de mindset et de posture active). Faire le point. Identifier les blocages. Commencer à se dire la vérité. Initier l'exploration intérieure.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>Cartographie de votre univers intérieur : (Re)découverte de votre identité profonde (mindset, valeurs, besoins fondamentaux).</li>
+
+                            <li>Boussole Intérieure : Clarification de vos valeurs fondamentales et priorités intrinsèques.</li>
+
+                            <li>Les Reflets de Soi : Comment nos relations (amicales, familiales, amoureuses, pro) agissent comme des <strong>miroirs</strong>, nous renvoyant des aspects de nous-mêmes. Décryptage des <strong>dynamiques inconscientes</strong> (attentes implicites, projections) pour comprendre pourquoi certains schémas relationnels se répètent.</li>
+
+                            <li>Votre Carte du Monde : Comprendre comment votre perception unique de la réalité (vos filtres, vos expériences, vos croyances) influence vos interactions et crée des <strong>décalages relationnels</strong> avec la "carte" des autres.</li>
+
+                            <li>La Graine du Changement : Comprendre les principes du mindset transformationnel.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Questionnaire guidé sur les valeurs et priorités intrinsèques.</li>
+
+                            <li>Mon Compas Intérieur (outil interactif ou PDF illustré de la roue de vie).</li>
+
+                            <li>Audio : Introduction au mindset transformationnel.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">2</div>
+
+                    <h3 class="session-title">ÉCOUTER : Les Échos du Passé qui Résonnent Aujourd'hui</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Mettre en lumière les schémas répétitifs, les dynamiques relationnelles inconscientes, les protections et les mécanismes de suradaptation.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>Archétypes et Masques : Identification des <strong>rôles inconscients</strong> que vous jouez (le perfectionniste, le sauveur, le martyr...) et des <strong>mécanismes de protection</strong> (masques) qui vous éloignent de votre authenticité.</li>
+
+                            <li>L'Ombre et la Lumière : Exploration des aspects de vous-même que vous refoulez (votre « ombre ») et des <strong>loyautés invisibles</strong> (ex: familiales) qui peuvent mener à l'<strong>auto-sabotage</strong>.</li>
+
+                            <li>Les Voix Intérieures : Initiation concrète à la <strong>lecture émotionnelle des blessures profondes</strong> (rejet, abandon, injustice, trahison, humiliation) et de leurs activations, pour ne plus les subir mais les comprendre et les intégrer.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Cartographie de mes Schémas (test & guide).</li>
+
+                            <li>Le Cahier des Masques (exercices d'écriture).</li>
+
+                            <li>Audio : Méditation sur les Loyautés Familiales.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">3</div>
+
+                    <h3 class="session-title">COMPRENDRE : La Note Manquante de l'Harmonie</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Identifier les besoins profonds, clarifier les attentes extérieures non comblées, mettre en lumière les formes de validation externe, travailler sur l'estime et la confiance en soi.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>Le Diapason Intérieur : Distinguer l'estime de soi et la confiance en soi du sentiment de valeur intrinsèque.</li>
+
+                            <li>Les Désirs du Cœur : Identification des besoins affectifs fondamentaux non satisfaits (donner/recevoir/être vu.e, choisi.e, entendu.e, exister dans le regard de l'autre...).</li>
+
+                            <li>L'Art du Re-Positionnement : Comprendre les écarts entre attentes, désirs et réalité, et commencer à ajuster votre posture intérieure pour créer de nouvelles résonances, me reprioriser sans culpabilité.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>PDF Valeurs & Besoins.</li>
+
+                            <li>Exercice de recentrage identitaire et priorisation des attentes.</li>
+
+                            <li>Journal des non-dits : mes attentes invisibles.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <section class="movement fade-in" id="mouvement2">
+
+            <div class="movement-header">
+
+                <i class="fas fa-heartbeat movement-icon"></i>
+
+                <h2 class="movement-title">Mouvement 2 : (RE)SENTIR & RÉSONNER</h2>
+
+                <p class="movement-subtitle">La Symphonie Retrouvée : Se reconnecter à son corps, ses vérités et ses vibrations.</p>
+
+            </div>
+
+            <div class="movement-description">
+
+                <p>Ce mouvement vise à restaurer la relation à soi à travers le corps, les ressentis et l'émotion. Il permet de réguler, pacifier, aimer ce qui en soi a longtemps été jugé ou mis de côté. Ici commence la résonance entre les différentes couches de soi, réduisant ainsi l'emprise des <strong>peurs récurrentes</strong>.</p>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">4</div>
+
+                    <h3 class="session-title">(RE)SENTIR : Les Accords Faux et les Croyances Dissonantes</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Identifier les croyances limitantes, les blessures fondatrices, les drivers et injonctions et reprogrammer les protections mentales.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>L'Archéologie des Blessures : Exploration des <strong>blessures fondatrices</strong> (racines profondes émotionnelles - enfance, figures marquantes).</li>
+
+                            <li>Les Programmes Automatiques : Identification de vos <strong>croyances limitantes</strong> (ex: Je suis « trop » / « pas assez », « Je ne mérite pas »), de leur origine et des <strong>drivers/injonctions</strong> (ex: « Sois parfait », « Fais plaisir », « Sois fort »…) qui dictent vos réactions, alimentent vos peurs et freinent votre épanouissement.</li>
+
+                            <li>Les Racines de la Peur : Identification des <strong>peurs spécifiques</strong> qui vous freinent (peur du jugement, de l'abandon, de l'échec, de ne pas être aimé·e...) et de leurs mécanismes d'activation.</li>
+
+                            <li>Réécrire votre Partition : Techniques concrètes de <strong>reprogrammation cognitive et émotionnelle</strong> pour déconstruire les pensées et schémas obsolètes, désamorcer les déclencheurs de peur, et installer de nouvelles croyances aidantes et des réponses plus alignées.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Cahier de Reprogrammation : Croyances, Drivers & Peurs.</li>
+
+                            <li>Journal d'introspection guidée : "D'où vient cette peur ? Est-elle encore utile ?".</li>
+
+                            <li>Visualisation guidée : "Je me libère".</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">5</div>
+
+                    <h3 class="session-title">ACCUEILLIR : Le Solfège de l'Auto-Compassion</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Travailler l'acceptation de soi, accueillir ses parts d'ombre, restaurer l'amour de soi, sortir de l'auto-exigence.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>L'Amour de Soi Profond : Distinguer l'amour de soi de l'estime de soi, et le cultiver au-delà des performances.</li>
+
+                            <li>Dialogue Intérieur : Pacifier la voix critique interne, explorer les contradictions internes et les parts d'ombre pour une unicité retrouvée.</li>
+
+                            <li>L'Art de se Prioriser : Ancrer de nouvelles habitudes d'auto-bienveillance, apprendre à s'honorer sans culpabiliser, fuir ou s'isoler.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Rituel de Reparenting et d'Auto-compassion (audio guidé).</li>
+
+                            <li>Journal de dialogue intérieur "Je m'honore quand...".</li>
+
+                            <li>Ancrage sensoriel : mouvement lent + gratitude + permission.</li>
+
+                            <li>Fiche des parts d'ombre.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">6</div>
+
+                    <h3 class="session-title">INTÉGRER : Le Rythme Naturel de Votre Corps</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Réguler les émotions par le corps, apaiser le système nerveux, retrouver une boussole sensorielle.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>La Danse des Émotions : Accueillir, nommer, canaliser : tristesse, colère, peur, culpabilité, honte...</li>
+
+                            <li>Corps-Esprit : Renforcer l'intégration corps/émotion/comportement pour une réponse juste, et réintégrer le corps comme boussole pour identifier les "alertes internes".</li>
+
+                            <li>Harmonisation du Système Nerveux : Techniques concrètes d'auto-régulation corporelle (ancrage, respiration, recentrage) pour apaiser les tensions et réduire l'intensité des <strong>réponses de peur</strong>.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Audio guidé d'auto-régulation.</li>
+
+                            <li>Exercice "Corps / émotion / besoin".</li>
+
+                            <li>Séquence d'auto-apaisement à intégrer au quotidien.</li>
+
+                            <li>Pratiques corporelles (respiration, ancrage, auto-accueil).</li>
+
+                            <li>Visualisation sensorielle sécurisante.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <section class="movement fade-in" id="mouvement3">
+
+            <div class="movement-header">
+
+                <i class="fas fa-handshake movement-icon"></i>
+
+                <h2 class="movement-title">Mouvement 3 : TOUCHER & ACCORDER</h2>
+
+                <p class="movement-subtitle">La Mélodie Partagée : S'affirmer sans se déformer, aimer sans se trahir.</p>
+
+            </div>
+
+            <div class="movement-description">
+
+                <p>Ce mouvement permet d'entrer en lien autrement : dans une posture choisie, claire, ancrée. Il s'agit de toucher l'autre sans se perdre, de poser ses mots, ses limites, ses choix. Le lien devient alors une musique partagée, pas un combat ou un décalage.</p>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">7</div>
+
+                    <h3 class="session-title">S'EXPRIMER : L'Art de Composer Votre Vérité</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Apprendre à se positionner avec clarté, prendre sa place relationnelle, gérer le regard de l'autre.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>La Communication Non-Violente (CNV) : Principes clés et application pratique pour des échanges fluides (exprimer un besoin, poser une limite).</li>
+
+                            <li>Le Regard de l'Autre : Se libérer de la peur du jugement et s'affirmer dans le respect, en travaillant sur la peur de déranger, de décevoir, de gêner, de ne pas être aimé...</li>
+
+                            <li>Poser ses Notes : Apprendre à formuler des choix relationnels clairs, sans culpabilité, et sortir du conflit sans se nier.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Scripts de formulation + cas concrets.</li>
+
+                            <li>Grille de dialogue assertif.</li>
+
+                            <li>Journal d'alignement verbal.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="session">
+
+                <div class="session-header">
+
+                    <div class="session-number">8</div>
+
+                    <h3 class="session-title">CRÉER : Les Harmonies qui Vous Portent</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Définir sa boussole relationnelle, poser ses critères de lien sain, assumer ses choix relationnels, se positionner dans le lien.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>La Boussole Relationnelle : Établir vos critères de liens sains et alignés (normes, limites, besoins, signaux, valeurs, feedback interne).</li>
+
+                            <li>Le Tableau de Projection : Visualiser et manifester les relations que vous méritez.</li>
+
+                            <li>L'Intuition Relationnelle : Développer votre discernement pour des connexions authentiques, faire confiance à son élan / recul / timing, oser ressentir, questionner, dire.</li>
+
+                            <li>L'Art de l'Intégration : Comprendre que le chemin est continu, fait de patience et d'humilité, avec le droit à l'erreur dans la relation.</li>
+
+                            <li><strong>BONUS :</strong> La Session de Coconstruction : Séance optionnelle avec un proche pour pratiquer les nouvelles dynamiques relationnelles (pratique + feedback guidé).</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Fiche "Ma Carte Relationnelle Idéale" (Fiche "ma relation désirée" / Tableau boussole relationnelle).</li>
+
+                            <li>Journal des Nouvelles Connexions (Journal d'auto-positionnement dans les liens).</li>
+
+                            <li>Visualisation "Les Liens que je Mérite" (Visualisation "relation juste et connexion consciente").</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <section class="final-section fade-in" id="phase-finale">
+
+            <h2 class="final-title">VIBRER : L'Éternel Accord</h2>
+
+            <p class="final-description">
+
+                Ce n'est pas une fin, mais le début d'une nouvelle symphonie. Cette phase est dédiée à l'intégration profonde des apprentissages, à la célébration de votre transformation et à l'ancrage de votre fréquence unique pour qu'elle continue de résonner bien au-delà de cet accompagnement, vous permettant de vivre avec une <strong>sérénité durable</strong> et où les anciennes peurs n'ont plus d'emprise.
+
+            </p>
+
+            
+
+            <div class="session" style="margin-top: 40px;">
+
+                <div class="session-header">
+
+                    <div class="session-number">9</div>
+
+                    <h3 class="session-title">VIBRER : Votre Mélodie, Votre Héritage</h3>
+
+                </div>
+
+                <div class="session-objective">
+
+                    <p><strong>Objectif :</strong> Intégrer, célébrer et projeter l'après.</p>
+
+                </div>
+
+                <div class="session-content">
+
+                    <div class="content-section">
+
+                        <h4><i class="fas fa-feather-alt"></i> Contenus Essentiels</h4>
+
+                        <ul class="content-list">
+
+                            <li>Le Concert Intérieur : Cérémonie de clôture personnalisée.</li>
+
+                            <li>La Rétrospective Harmonique : Bilan de vos 3 mois de transformation (feedback sur les 3 mois).</li>
+
+                            <li>Votre Symphonie Future : Plan d'action pour la continuité, les ressources d'autonomie et les options de suivi.</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="tools-section">
+
+                        <h4><i class="fas fa-toolbox"></i> Outils & Ressources</h4>
+
+                        <ul class="content-list">
+
+                            <li>Votre Lettre à Soi du Futur (Lettre à soi).</li>
+
+                            <li>Audio d'Ancrage : "Je suis la Musique" (Audio d'ancrage final "Je suis à ma fréquence").</li>
+
+                            <li>Feuille de route pour l'autonomie.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+        <footer>
+
+            <p>
+
+                "Vous n'êtes pas trop. Vous n'êtes pas seul·e. Vous n'étiez juste pas encore accordé·e à la bonne fréquence."
+
+            </p>
+
+            <div class="musical-notes">
+
+                ♪ ♫ ♪ ♫ ♪
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    
+
+    <script>
+
+        // Scroll progress bar
+
+        window.addEventListener('scroll', () => {
+
+            const progressBar = document.querySelector('.progress-bar');
+
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+            const progress = (window.scrollY / totalHeight) * 100;
+
+            progressBar.style.width = `${progress}%`;
+
+        });
+
+    
+
+        // Fade-in animation on scroll
+
+        const faders = document.querySelectorAll('.fade-in');
+
+    
+
+        const appearOptions = {
+
+            threshold: 0.2, // When 20% of the element is in view
+
+            rootMargin: "0px 0px -50px 0px" // Start loading a bit before it enters view
+
+        };
+
+    
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) {
+
+                    return;
+
+                } else {
+
+                    entry.target.classList.add('visible');
+
+                    appearOnScroll.unobserve(entry.target);
+
+                }
+
+            });
+
+        }, appearOptions);
+
+    
+
+        faders.forEach(fader => {
+
+            appearOnScroll.observe(fader);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
